@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer">
+  <title>TETRA Token Test Sender</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="pageTitle">
+      <div class="brand-row">
+        <div class="brand-mark" aria-hidden="true">T</div>
+        <div>
+          <p class="eyebrow">SOLANA TOKEN TOOL</p>
+          <h1 id="pageTitle">Test Token Sender</h1>
+        </div>
+      </div>
+
+      <div class="warning" role="alert">
+        <strong>Testing only.</strong> Use a low-value burner wallet. Your private key stays in this tab and is never stored by this page.
+      </div>
+
+      <form id="sendForm" novalidate>
+        <label for="apiKey">Helius API key or RPC URL</label>
+        <input id="apiKey" name="apiKey" type="password" autocomplete="off"
+               placeholder="API key or https://mainnet.helius-rpc.com/?api-key=..." required>
+
+        <label for="mintAddress">Token mint address</label>
+        <input id="mintAddress" name="mintAddress" type="text" autocomplete="off"
+               spellcheck="false" placeholder="TETRA mint address" required>
+        <p class="hint">Enter the token's mint/contract address, not the symbol “TETRA”.</p>
+
+        <div class="split">
+          <div>
+            <label for="amount">Amount to send</label>
+            <input id="amount" name="amount" type="text" inputmode="decimal"
+                   autocomplete="off" placeholder="1000" required>
+          </div>
+          <div>
+            <label for="network">Network</label>
+            <select id="network" name="network">
+              <option value="mainnet-beta">Mainnet</option>
+              <option value="devnet">Devnet</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="privateKey">Sender private key</label>
+        <div class="password-wrap">
+          <input id="privateKey" name="privateKey" type="password" autocomplete="new-password"
+                 placeholder="Base58 key or [12,34,...] secret-key array" required>
+          <button id="toggleKey" class="reveal" type="button" aria-label="Show private key">Show</button>
+        </div>
+
+        <label for="receiverAddress">Receiver wallet address</label>
+        <input id="receiverAddress" name="receiverAddress" type="text" autocomplete="off"
+               spellcheck="false" placeholder="Receiver Solana wallet" required>
+
+        <div id="summary" class="summary" hidden></div>
+
+        <button id="sendButton" class="primary" type="submit">
+          <span class="button-label">Test Send</span>
+          <span class="spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+
+      <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
